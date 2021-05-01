@@ -1,5 +1,5 @@
 const User = require('./User');
-const Gallery = require('./Gallery');
+const Gallery = require('./Post');
 const Painting = require('./Painting');
 
 Gallery.hasMany(Painting, {
