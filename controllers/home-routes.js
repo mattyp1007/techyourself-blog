@@ -36,6 +36,10 @@ router.get('/post/:id', withAuth, async (req, res) => {
     const dbBlogPostData = await BlogPost.findByPk(req.params.id, {
       include: [
         {
+          model: User,
+          attributes: ['username'],
+        },
+        {
           model: Comment,
           attributes: [
             'id',
@@ -43,7 +47,12 @@ router.get('/post/:id', withAuth, async (req, res) => {
             'user_id',
             'created_at',
           ],
+          include: {
+            model: User,
+            attributes: ['username'],
+          },
         },
+        
       ],
     });
 
