@@ -7,12 +7,12 @@ const postdata = [
     user_id: 1,
   },
   {
-    name: 'Handlebars',
+    title: 'Handlebars',
     body: 'Body text for blog post titled "Handlebars".',
     user_id: 2,
   },
   {
-    name: 'Bootstrap',
+    title: 'Bootstrap',
     body: 'Body text for blog post titled "Bootstrap".',
     user_id: 1,
   },
