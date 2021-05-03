@@ -1,12 +1,16 @@
 <section class="container">
-  <h3 class="gallery-name">{{title}}</h3>
-  <h4>By: {{user.username}}</h4>
-  <p class="border-bottom">{{body}}</p>
-  <section class="flex-col justify-center">
-    <h4>Comments</h4>
+  <section class="flex-col align-center">
+    <div class="flex-row justify-between align-center">
+      <h3 class="col-sm-9">{{title}}</h3>
+      <h5 class="col-sm-3 text-secondary">{{user.username}}</h4>
+    </div>
+    <p>{{body}}</p>
+  </section>
+  <section class="flex-col align-center">
+    <h4 class="border-bottom border-dark border-3">Comments</h4>
     {{#each comments as |comment|}}
-    <div class="border border-3 border-primary">
-      <h5>{{comment.user.username}}</h5>
+    <div class="border-bottom border-dark border-2">
+      <h5 class="border-bottom">{{comment.user.username}}</h5>
       <p>{{comment.body}}</p>
     </div>
     {{/each}}
