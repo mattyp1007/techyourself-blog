@@ -3,6 +3,8 @@ const commentFormHandler = async (event) => {
   const commentBody = document.querySelector('#comment').value.trim();
   const button = document.querySelector('.submit-btn');
   const blogId = parseInt(button.dataset.blogid);
+  const statusMsg = document.querySelector('.comment-status');
+
   console.log("Blog id:",blogId);
   const response = await fetch('/api/blogs/comments', {
     method: 'POST',
@@ -11,9 +13,12 @@ const commentFormHandler = async (event) => {
   });
 
   if (response.ok) {
-    alert('Comment submitted');
+    statusMsg.classList.remove('invisible');
   } else {
-    alert('Comment failed to submit');
+    statusMsg.textContent = 'Post failed';
+    statusMsg.classList.remove('text-success');
+    statusMsg.classList.add('text-danger');
+    statusMsg.classList.remove('invisible');
   }
 }
 
