@@ -4,7 +4,7 @@ const commentFormHandler = async (event) => {
   const button = document.querySelector('.submit-btn');
   const blogId = parseInt(button.dataset.blogid);
   console.log("Blog id:",blogId);
-  const response = await fetch('/api/comments', {
+  const response = await fetch('/api/blogs/comments', {
     method: 'POST',
     body: JSON.stringify({ commentBody, blogId }),
     headers: {'Content-Type': 'application/json' },

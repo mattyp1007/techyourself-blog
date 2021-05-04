@@ -85,7 +85,6 @@ router.get('/dashboard', async (req, res) => {
     post.get({ plain: true })
   );
   const user = userPosts[0].user.username;
-  console.log(userPosts);
   res.render('dash', { userPosts, user, loggedIn: req.session.loggedIn });
 })
 
