@@ -64,6 +64,21 @@ router.get('/post/:id', withAuth, async (req, res) => {
   }
 });
 
+
+// Post a comment
+// router.post('/post/:id', withAuth, async (req, res) => {
+//   try {
+//     const newComment = await Comment.create({
+//       body: req.body.content,
+//       user_id: req.session.user_id,
+//       post_id: req.params.id,
+//     })
+//     res.status(200).json(newComment);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
