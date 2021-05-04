@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="flex-col col-md-4 align-items-center">
+    <h3 class="row">{{user}}'s Dashboard</h3>
+    {{#each userPosts as |post|}}
+    {{> post-list}}
+    {{/each}}
+  </div>
+
+  <div class="flex-col col-md-8 align-items-center"></div>
+</div>
+

@@ -64,20 +64,30 @@ router.get('/post/:id', withAuth, async (req, res) => {
   }
 });
 
-
-// Post a comment
-// router.post('/post/:id', withAuth, async (req, res) => {
-//   try {
-//     const newComment = await Comment.create({
-//       body: req.body.content,
-//       user_id: req.session.user_id,
-//       post_id: req.params.id,
-//     })
-//     res.status(200).json(newComment);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+// get user's posts for homepage
+router.get('/dashboard', async (req, res) => {
+  if (!req.session.loggedIn){
+    res.redirect('/login');
+    return;
+  }
+  const userPostData = await BlogPost.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['username'],
+      },
+    ]
+  });
+  const userPosts = userPostData.map((post) =>
+    post.get({ plain: true })
+  );
+  const user = userPosts[0].user.username;
+  console.log(userPosts);
+  res.render('dash', { userPosts, user, loggedIn: req.session.loggedIn });
+})
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
