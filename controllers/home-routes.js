@@ -63,7 +63,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//
 // get user's posts for homepage
 router.get('/dashboard', async (req, res) => {
   if (!req.session.loggedIn){
